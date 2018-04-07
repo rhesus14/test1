@@ -1,0 +1,41 @@
+<mat-list-item *ngFor="let event of events | async">
+
+  <mat-card-title-group>
+      <mat-card-header>
+        <mat-card-title><h1>{{event.title}}</h1></mat-card-title>
+        <mat-card-subtitle><h4>Event ID: {{event.eventid}}</h4></mat-card-subtitle>
+      </mat-card-header>
+      
+      <mat-card-content>
+        <div *ngIf="afAuth.authState | async as user">
+          <h3>Host: {{user.displayName}}</h3>
+        </div>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                  About:
+                </mat-panel-title>
+                <mat-panel-description>
+                  Summary of this meetup event.
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+                 <p>{{event.description}}</p>  
+        </mat-expansion-panel>
+      </mat-card-content>
+
+  </mat-card-title-group>
+      <mat-expansion-panel>
+          <mat-expansion-panel-header>
+              <mat-panel-title>
+              Attendees:
+              </mat-panel-title>
+              <mat-panel-description>
+                People attending this meetup event.
+              </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div *ngFor="let attendee of event.attendees">
+            <p>{{attendee}}</p>   
+          </div>  
+      </mat-expansion-panel>
+
+</mat-list-item>

@@ -1,0 +1,32 @@
+<mat-divider></mat-divider>
+<mat-nav-list>
+<mat-list>
+    <h1 matSubheader>Up Coming:</h1>
+    <mat-list-item *ngFor="let event of events | async">
+       <mat-icon matListIcon>check circle</mat-icon>
+       <h2 matLine routerLink="/detail/{{event.eventid}}">{{event.title}}</h2>
+       <a matLine routerLink="/detail/{{event.eventid}}" > The ID is: {{event.eventid}}</a>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+
+    <h2 matSubheader>Add Event:</h2>
+
+    <form class="event-form">
+            <mat-form-field class="event-full-width">
+                    <input matInput type="text" [(ngModel)]="title" name="title" placeholder="Event title.."> 
+            </mat-form-field>
+          
+            <mat-form-field class="example-full-width">
+                    <input matInput type="number"[(ngModel)]="eventid" name="eventid" placeholder="Event ID number..">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                    <input matInput type="text" [(ngModel)]="description" name="description" placeholder="Event description.."> 
+            </mat-form-field>
+            <br>
+
+            <button color="primary" type="submit" (click)="addEvent()" mat-raised-button>Submit</button>
+    </form>
+
+ </mat-list> 
+</mat-nav-list>

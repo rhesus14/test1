@@ -1,0 +1,14 @@
+<mat-divider></mat-divider>
+<div *ngIf="afAuth.authState | async as user;">
+<mat-card-title-group>
+<mat-card-header>
+ <mat-card-title><h1>Hello {{ user.displayName }}!</h1></mat-card-title>
+  <mat-card-subtitle>Your Account</mat-card-subtitle>
+  <img class="avatar" mat-card-avatar src="{{user.photoURL}}" height="102" width="102" vspace="15"> 
+  </mat-card-header>
+ <mat-card-content><qr-code value="{{ user.uid }}" [size]="300"></qr-code></mat-card-content>
+</mat-card-title-group>
+  
+<mat-divider></mat-divider>
+<button mat-raised-button (click)="logout()">Logout</button>
+</div>

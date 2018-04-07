@@ -1,0 +1,19 @@
+<div class="logo">
+<h1>Group IO</h1>
+</div>
+<div *ngIf="afAuth.authState | async as user; else showLogin">
+    <div class="topnav">
+    <nav>
+      <a routerLink="/account" routerLinkActive="active">Account</a>
+      <a routerLink="/events" routerLinkActive="active">Events</a>
+    </nav>
+    </div>
+    <router-outlet></router-outlet>
+</div>
+
+<ng-template #showLogin>
+    <p>Please login.</p>
+    <button mat-raised-button (click)="login()">Login with Google</button>
+</ng-template>
+
+
